@@ -23,12 +23,25 @@ namespace _01._09._2023
 
             person.Surname = textBox_Surname.Text;
             person.Name = textBox_Name.Text;
-            person.Fatherland= textBox_Fatherland.Text;
+            person.Fatherland = textBox_Fatherland.Text;
 
             person.Gender = comboBox_Gender.Text;
             person.Date = dateTimePicker_Date.Text;
 
+            person.State = textBox_State.Text;
+            person.Abaut = textBox_About.Text;
+
             Program.SavePerson(person);
+
+            textBox_Surname.Text = "";
+            textBox_Name.Text = "";
+            textBox_Fatherland.Text = "";
+
+            comboBox_Gender.Text = "";
+            dateTimePicker_Date.Text = "";
+
+            textBox_State.Text = "";
+            textBox_About.Text = "";
         }
 
         private void button_Load_Click(object sender, EventArgs e)
@@ -41,6 +54,9 @@ namespace _01._09._2023
 
             comboBox_Gender.Text = person.Gender;
             dateTimePicker_Date.Text = person.Date;
+
+            textBox_State.Text = person.State;
+            textBox_About.Text = person.Abaut;
         }
     }
 }

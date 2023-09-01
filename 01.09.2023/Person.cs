@@ -15,6 +15,7 @@ namespace _01._09._2023
         public string Gender { get; set; }
         public string Date { get; set; }
 
+        public string Sate { get; set; }
         public string Abaut { get; set; }
     }
 }
