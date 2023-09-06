@@ -48,20 +48,21 @@ namespace _9._6._2023
                         playmentPading + x * cellSize,
                         playmentPading + y * cellSize,
                         cellSize, cellSize);
-                }
 
-            for (int y = 0; y < 3; y++)
-                for (int x = 0; x < cellCount; x++)
-                {
-                    g.FillEllipse(brushBlack,
+                    if (y < 3)
+                    {
+                        g.FillEllipse(brushBlack,
                         playmentPading + x * cellSize + figurePading / 2,
                         playmentPading + y * cellSize + figurePading / 2,
                         cellSize - figurePading, cellSize - figurePading);
-
-                    g.FillEllipse(brushWhite,
+                    }
+                    else if (y > cellCount - 4)
+                    {
+                        g.FillEllipse(brushWhite,
                         playmentPading + x * cellSize + figurePading / 2,
-                        playmentPading + (y + cellCount - 3) * cellSize + figurePading / 2,
+                        playmentPading + y * cellSize + figurePading / 2,
                         cellSize - figurePading, cellSize - figurePading);
+                    }
                 }
 
             brushBlack.Dispose();
