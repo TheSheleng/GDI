@@ -36,7 +36,32 @@ namespace _9._6._2023__dz_
 
             g.Clear(BackColor);
 
-            await Task.Run(() => {
+            if (checkBox2.Checked == true)
+            {
+                Pen cp = new Pen(Color.LightGray, 2);
+
+                for (int i = 1; i < 10; i++)
+                {
+                    int c = i * 50 + 1;
+                    g.DrawLine(cp, 0, c, 500, c);
+                    g.DrawLine(cp, c, 0, c, 500);
+                }
+                cp.Dispose();
+            }
+
+            if (checkBox1.Checked == true)
+            {
+                g.DrawLine(pen, 0, 252, 500, 252);
+                g.DrawLine(pen, 252, 0, 252, 500);
+            }
+
+            labelY__250.Text = labelX__250.Text = Math.Round(-250f / tb1, 1).ToString();
+            labelY__125.Text = labelX__125.Text = Math.Round(-125f / tb1, 1).ToString();
+            labelY_125.Text = labelX_125.Text = '+' + Math.Round(125f / tb1, 1).ToString();
+            labelY_250.Text = labelX_250.Text = '+' + Math.Round(250f / tb1, 1).ToString();
+
+            await Task.Run(() =>
+            {
                 isDrawing = true;
 
                 try
@@ -60,7 +85,8 @@ namespace _9._6._2023__dz_
                 }
                 catch (Exception ex)
                 {
-                    Invoke((Action)(() => {
+                    Invoke((Action)(() =>
+                    {
                         label2.Text = ex.Message;
                     }));
                 }
