@@ -40,7 +40,7 @@ namespace _8._9._2023__dz_
             using (Pen pen = new Pen(Color.Black, 10))
                 g.DrawEllipse(pen, 30, 30, width - 60, height - 60);
 
-                TimeOnly time = TimeOnly.FromDateTime(DateTime.Now);
+            TimeOnly time = TimeOnly.FromDateTime(DateTime.Now);
             PointF pHour = FractionsInDegrees(time.Hour, 12);
             PointF pMinute = FractionsInDegrees(time.Minute, 60);
             PointF pSecond = FractionsInDegrees(time.Second, 60);
@@ -58,6 +58,8 @@ namespace _8._9._2023__dz_
                 g.FillEllipse(brush, center.X - 10, center.Y - 10, 20, 20);
 
             g.Dispose();
+
+            textBox.Text = $"{time.Hour}:{time.Minute}:{time.Second}";
         }
     }
 }

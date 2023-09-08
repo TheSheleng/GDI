@@ -31,13 +31,14 @@
             components = new System.ComponentModel.Container();
             pictureBox = new PictureBox();
             timer = new System.Windows.Forms.Timer(components);
+            textBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
             // 
             // pictureBox
             // 
-            pictureBox.Dock = DockStyle.Fill;
             pictureBox.Location = new Point(0, 0);
+            pictureBox.Margin = new Padding(7, 6, 7, 6);
             pictureBox.Name = "pictureBox";
             pictureBox.Size = new Size(600, 600);
             pictureBox.TabIndex = 0;
@@ -48,25 +49,45 @@
             timer.Interval = 1000;
             timer.Tick += timer_Tick;
             // 
+            // textBox
+            // 
+            textBox.BorderStyle = BorderStyle.None;
+            textBox.Dock = DockStyle.Bottom;
+            textBox.Enabled = false;
+            textBox.HideSelection = false;
+            textBox.Location = new Point(0, 602);
+            textBox.Multiline = true;
+            textBox.Name = "textBox";
+            textBox.ReadOnly = true;
+            textBox.RightToLeft = RightToLeft.No;
+            textBox.Size = new Size(600, 58);
+            textBox.TabIndex = 1;
+            textBox.TextAlign = HorizontalAlignment.Center;
+            // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(23F, 48F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.OldLace;
-            ClientSize = new Size(600, 600);
+            ClientSize = new Size(600, 660);
+            Controls.Add(textBox);
             Controls.Add(pictureBox);
+            Font = new Font("Segoe UI Black", 18F, FontStyle.Bold, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(7, 6, 7, 6);
             MaximizeBox = false;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Clock";
             ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private PictureBox pictureBox;
         private System.Windows.Forms.Timer timer;
+        private TextBox textBox;
     }
 }
