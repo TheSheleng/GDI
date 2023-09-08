@@ -6,7 +6,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,50 +21,53 @@ namespace _9._6._2023__dz_
             InitializeComponent();
         }
 
-        private void draw()
+        bool isDrawing = false;
+
+        private async void button1_Click(object sender, EventArgs e)
         {
+            isDrawing = false;
+
             string input = textBox1.Text;
+            int tb1 = trackBar1.Value;
+            int tb2 = trackBar2.Value;
 
             Graphics g = pictureBox1.CreateGraphics();
             Pen pen = new Pen(Color.Black, 4);
 
             g.Clear(BackColor);
-            g.DrawLine(pen, 0, 252, 500, 252);
-            g.DrawLine(pen, 252, 0, 252, 500);
 
-            try
-            {
-                for (float x = -250; x < 250; x += 1f)
+            await Task.Run(() => {
+                isDrawing = true;
+
+                try
                 {
-                    Expression expr = new Expression(
-                            input.Replace("X", $"({x.ToString().Replace(',', '.')})")
-                        );
+                    float step = tb2 / 100f;
+                    for (float x = -250; x < 250; x += step)
+                    {
+                        Expression expr = new Expression(
+                                input.Replace("X", $"({x.ToString().Replace(',', '.')})")
+                            );
 
-                    double result = Convert.ToDouble(expr.Evaluate());
+                        double result = Convert.ToDouble(expr.Evaluate());
 
-                    g.DrawEllipse(pen, new RectangleF(
-                        x * trackBar1.Value - 2 + 250, 
-                        -((float)result * trackBar1.Value) - 2 + 250, 
-                        4, 4));
+                        g.DrawEllipse(pen, new RectangleF(
+                            x * tb1 + 248,
+                            -((float)result * tb1) + 248,
+                            4, 4));
+
+                        if (!isDrawing) return;
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                label2.Text = ex.Message;
-            }
+                catch (Exception ex)
+                {
+                    Invoke((Action)(() => {
+                        label2.Text = ex.Message;
+                    }));
+                }
+            });
 
             pen.Dispose();
             g.Dispose();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            draw();
-        }
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-            draw();
         }
     }
 }

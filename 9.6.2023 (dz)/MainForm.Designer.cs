@@ -34,15 +34,18 @@
             pictureBox1 = new PictureBox();
             label2 = new Label();
             trackBar1 = new TrackBar();
+            trackBar2 = new TrackBar();
+            checkBox1 = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBar2).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(30, 608);
+            label1.Location = new Point(30, 718);
             label1.Name = "label1";
             label1.Size = new Size(85, 48);
             label1.TabIndex = 0;
@@ -51,14 +54,14 @@
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(107, 611);
+            textBox1.Location = new Point(107, 721);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(423, 55);
             textBox1.TabIndex = 1;
             // 
             // button1
             // 
-            button1.Location = new Point(30, 672);
+            button1.Location = new Point(30, 782);
             button1.Name = "button1";
             button1.Size = new Size(500, 55);
             button1.TabIndex = 2;
@@ -79,13 +82,14 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(30, 739);
+            label2.Location = new Point(30, 849);
             label2.Name = "label2";
             label2.Size = new Size(0, 25);
             label2.TabIndex = 4;
             // 
             // trackBar1
             // 
+            trackBar1.LargeChange = 1;
             trackBar1.Location = new Point(30, 536);
             trackBar1.Maximum = 20;
             trackBar1.Minimum = 1;
@@ -93,13 +97,34 @@
             trackBar1.Size = new Size(500, 69);
             trackBar1.TabIndex = 5;
             trackBar1.Value = 1;
-            trackBar1.Scroll += trackBar1_Scroll;
+            // 
+            // trackBar2
+            // 
+            trackBar2.Location = new Point(30, 611);
+            trackBar2.Maximum = 100;
+            trackBar2.Minimum = 1;
+            trackBar2.Name = "trackBar2";
+            trackBar2.Size = new Size(500, 69);
+            trackBar2.TabIndex = 6;
+            trackBar2.Value = 100;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(30, 686);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(70, 29);
+            checkBox1.TabIndex = 7;
+            checkBox1.Text = "Оси";
+            checkBox1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(560, 780);
+            ClientSize = new Size(560, 947);
+            Controls.Add(checkBox1);
+            Controls.Add(trackBar2);
             Controls.Add(trackBar1);
             Controls.Add(label2);
             Controls.Add(pictureBox1);
@@ -113,6 +138,7 @@
             Text = "MainForm";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBar2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -125,5 +151,7 @@
         private PictureBox pictureBox1;
         private Label label2;
         private TrackBar trackBar1;
+        private TrackBar trackBar2;
+        private CheckBox checkBox1;
     }
 }
