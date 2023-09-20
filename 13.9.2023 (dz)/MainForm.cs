@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace _13._9._2023__dz_
 {
@@ -53,6 +54,38 @@ namespace _13._9._2023__dz_
             this.Region = new Region(path);
 
             this.ChromMinimize.BackColor = this.BackColor;
+        }
+
+        //===============================================
+
+        private void button_save_Click(object sender, EventArgs e)
+        {
+            int age;
+            if (textBox_name.Text != "" && int.TryParse(textBox_age.Text, out age))
+            {
+                Program.SavePersone(new Person(textBox_name.Text, age));
+            }
+
+            textBox_name.Text = string.Empty;
+            textBox_age.Text = string.Empty;
+        }
+
+        private void button_showAll_Click(object sender, EventArgs e)
+        {
+            listView.Items.Clear();
+            foreach (var p in Program.GetPersons(null))
+            {
+                listView.Items.Add(new ListViewItem(new[] { p.Name, p.Age.ToString() }));
+            }
+        }
+
+        private void boundButton_search_Click(object sender, EventArgs e)
+        {
+            listView.Items.Clear();
+            foreach (var p in Program.GetPersons(textBox_search.Text))
+            {
+                listView.Items.Add(new ListViewItem(new[] { p.Name, p.Age.ToString() }));
+            }
         }
     }
 }
